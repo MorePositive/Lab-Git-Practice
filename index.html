@@ -15,7 +15,7 @@
       background-color: #070707;
       transition: 0.5s all;
     }
-    .header {
+    .title {
       font-size: 48px;
     }
     .btns {
@@ -26,40 +26,60 @@
     .sergey-background {
       background-color: #6bc8ec;
     }
-    .tanya-background {
+    .tania-background {
       background-color: plum;
-      color: green;
     }
-
-
+    .sasha-background {
+      background-color: #dcf667;
+    }
+    .lena-background {
+      background-color: #f66767;
+    }
   </style>
 </head>
 <body>
-  <h1 class="header">Who are you?</h1>
+  <h1 class="title">Who are you?</h1>
   <div class="btns">
     <button class="btn btn-secondary sergey">Sergey</button>
-    <button class="btn btn-secondary tanya">Tanya</button>
+    <button class="btn btn-secondary tania">Tania</button>
+    <button class="btn btn-secondary sasha">Sasha</button>
+    <button class="btn btn-secondary lena">Lena</button>
+  </div>
     <script>
       const body = document.querySelector("body");
-      const header = document.querySelector(".header");
+      const title = document.querySelector(".title");
+
+      //buttons
       const sergeyBtn = document.querySelector(".sergey");
-      const tanyaBtn = document.querySelector(".tanya");
+      const taniaBtn = document.querySelector(".tania");
+      const sashaBtn = document.querySelector(".sasha");
+      const lenaBtn = document.querySelector(".lena");
+
+      const magic = (setBackground, text) => {
+        const classes = ["tania-background", "sergey-background", "sasha-background", "lena-background"];
+        
+        classes.forEach(clazz => {
+          body.classList.contains(clazz) ? 
+          body.classList.remove(clazz) : null;
+        });
+        
+        body.classList.add(setBackground);
+        title.innerHTML = text;
+      };
 
       sergeyBtn.addEventListener("click", () => {
-        if (body.classList.contains("tanya-background")) {
-          body.classList.remove("tanya-background")
-        }
-        body.classList.add("sergey-background");
-        header.innerHTML = "Sergey"
+        magic("sergey-background", "Sergey");
+      });
+      taniaBtn.addEventListener("click", () => {
+        magic("tania-background", "Tania");
+      });
+      sashaBtn.addEventListener("click", () => {
+        magic("sasha-background", "Sasha");
+      });
+      lenaBtn.addEventListener("click", () => {
+        magic("lena-background", "Lena");
       });
 
-      tanyaBtn.addEventListener("click", () => {
-        if (body.classList.contains("sergey-background")) {
-          body.classList.remove("sergey-background")
-        }
-        body.classList.add("tanya-background");
-        header.innerHTML = "Tanya"
-      });
     </script>
 </body>
 </html>
